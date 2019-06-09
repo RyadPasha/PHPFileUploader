@@ -79,7 +79,7 @@ function secureUpload($fileField = null, $uploadPath = 'uploads/', $maxSize = 80
     // If ‘$isImage’ AND ‘$checkImage’ are set to ‘true’
     // Then, using getimagesize(), we'll be processing the image with the GD library.
     // If it isn’t an image, this will fail and therefor the entire upload will fail:
-    if($checkImage && $isImage){if(!getimagesize($_FILES[$fileField]['tmp_name'])) $output['error'][] = 'Uploaded file is not a valid image.';}
+    if($checkImage && $isImage){if(!getimagesize($_FILES[$fileField]['tmp_name'])) $output['errors'][] = 'Uploaded file is not a valid image.';}
 
     $newFileName = ($newName === 1 ? sprintf('%s.%s', md5_file($_FILES[$fileField]['tmp_name']), $fileExt) // If ($newName = 1) <- $newFileName = Md5_file
                  : ($newName === 2 ? sprintf('%s.%s', substr(md5(microtime()),0,15), $fileExt)             // If ($newName = 2) <- $newFileName = Random name
@@ -99,8 +99,8 @@ function secureUpload($fileField = null, $uploadPath = 'uploads/', $maxSize = 80
       $output['filename'] = $newFileName;
       $output['filepath'] = $uploadPath;
       $output['filesize'] = $fileSize;
-    } else $output['error'][] = 'Server error.';
-  } else $output['error'][] = 'No file uploaded.';
+    } else $output['errors'][] = 'Server error.';
+  } else $output['errors'][] = 'No file uploaded.';
 
   return $output;
 }
