@@ -12,7 +12,7 @@ See detailed information below ..
 
 How to use
 ==========
-Let’s suppose the you downloaded it inside the folder ‘include’. 
+Let’s suppose that you downloaded it inside the folder ‘include’. 
 
 Simply include the function and call the `secureUpload()` function!
 
