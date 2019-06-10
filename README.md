@@ -5,7 +5,9 @@ Configuration
 ==========
 For composer installations: Copy the folder ‘vendor’ into your your server.
 
-For non-composer installations: Download and unzip the ‘fileUploader.php’ in include folder in your server.
+
+For non-composer installations: Download and unzip the ‘fileUploader.php’ in the ‘include’ folder in your server.
+
 See detailed information below ..
 
 How to use
@@ -29,7 +31,7 @@ Suppose that we want to upload an image with a field name ‘profile_pic’ ($_F
 Since it's a picture, we can validate it as follows:
 
 ```php
-secureUpload('profile_pic', 'uploads/', 2000000, 'user_111112', true, true);
+$uploader = secureUpload('profile_pic', 'uploads/', 2000000, 'user_111112', true, true);
 ```
 
 
@@ -42,13 +44,15 @@ if(@$uploader['filename'])
   echo 'File uploaded successfully.';
 
 else
-  echo $uploader['errors'][0];
+  echo 'An error occurred: ' . $uploader['errors'][0];
 ```
 
 You can also print the ‘$uploader’ array to see the output:
 
 ```php
 echo '<pre>'; print_r($uploader); echo '</pre>';
+// Or simply:
+var_dump($uploader);
 ```
 
 
