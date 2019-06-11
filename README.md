@@ -14,16 +14,19 @@ How to use
 ==========
 Let’s suppose that you downloaded it inside the folder ‘include’. 
 
-Simply include the function and call the `secureUpload()` function!
+Simply include the file `fileUploader.php` and then call the `secureUpload()` function!
 
-At the begin of your main script, add this code:
+Programmatically; at the begin of your main script, add this code:
 
 ```php
 <?php
 require 'include/fileUploader.php';
+```
 
-// Call the ‘secureUpload’ function and pass it’s parameters:
-$uploader = secureUpload($fileField, $uploadPath, $maxSize, $newName, $isImage, $checkImage, $allowedMimeTypes);
+The structure  of the function is:
+
+```php
+secureUpload($fileField, $uploadPath, $maxSize, $newName, $isImage, $checkImage, $allowedMimeTypes);
 ```
 
 Suppose that we want to upload an image with a field name ‘profile_pic’ ($_FILES['profile_pic'])
@@ -37,10 +40,10 @@ $uploader = secureUpload('profile_pic', 'uploads/', 2000000, 'user_111112', true
 
 The returned array ‘$uploader’ will contain either an ‘errers’ array (in case any error occured), or a ‘filename’ index which means that the file is uploaded successfully.
 
-You can detect that programmably as follows:
+You can detect that programmatically as follows:
 
 ```php
-if(@$uploader['filename'])
+if(isset($uploader['filename']))
   echo 'File uploaded successfully.';
 
 else
