@@ -7,9 +7,10 @@
   *
   * @author: Mohamed Riyad
   * @created on: 9 Jun, 2019
+  * @last update: 4 Jul, 2020
   *
-  * @url: http://ryadpasha.com
-  * @email: me@ryadpasha.com
+  * @url: http://ryadpasha.com, ryad.me
+  * @email: me@ryadpasha.com, m@ryad.me
   * @license: GNU General Public License v3.0
   *
   * @see: https://github.com/ryadpasha/PHPFileUploader
@@ -74,7 +75,7 @@ function secureUpload($fileField = null, $uploadPath = 'uploads/', $maxSize = 80
     if(!@in_array($_FILES[$fileField]['type'], $allowedMimeTypes)) $output['errors'][] = 'Invalid file type.';
 
     // Check that the file is not too big .. Given $maxSize in (byets).
-    if($fileSize > $maxSize) $output['errors'][] = 'File is too big. Max allowed size is: '.($maxSize / 1024).' Kb, yours is '.($fileSize / 1024).' Kb.';
+    if($fileSize > $maxSize) $output['errors'][] = 'File is too big. Max allowed size is: '.round($maxSize / 1024, 2).' Kb, yours is '.round($fileSize / 1024, 2).' Kb.';
 
     // If ‘$isImage’ AND ‘$checkImage’ are set to ‘true’
     // Then, using getimagesize(), we'll be processing the image with the GD library.
